@@ -9,8 +9,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en" className={roboto.className}>
         <Head>
-          {/* AK: Adding title and meta description */}
-          <title>Laizy.ai</title>
+          {/* AK: adding meta description */}
+          
           <meta name="description" content="Free AI Generated Images, 3D Models, Animations and much more."/>
 
           {/* PWA primary color */}
