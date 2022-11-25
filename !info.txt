@@ -1,3 +1,9 @@
 Files: https://github.com/mui/material-ui/tree/master/examples/nextjs
 Deployment: https://docs.digitalocean.com/tutorials/app-nextjs-deploy/
 
+Pushing a new version: 
+(edit files)
+git add . 
+git commit -m "message"
+git push 
+
