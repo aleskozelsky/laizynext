@@ -1,5 +1,4 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -9,14 +8,16 @@ import CardHeader from '@mui/material/CardHeader';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/StarBorder';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import LinkMUI from '@mui/material/Link';
 import Link from '../src/Link'; // next.js link
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
+/**
+ * Partials
+ */
+import LaizyAppBar from '../src/partials/LaizyAppBar';
+import LaizyFooter from '../src/partials/LaizyFooter';
 
-import Copyright from '../src/Copyright';
 
 /**
  * Inspired by: https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/getting-started/templates/pricing/Pricing.js
@@ -37,6 +38,7 @@ const tiers = [
     ],
     buttonText: 'Start',
     buttonVariant: 'contained',
+    href:"/2d"
   },
   {
     title: '3D',
@@ -50,6 +52,7 @@ const tiers = [
     ],
     buttonText: 'Add Image',
     buttonVariant: 'outlined',
+    href:"/3d"
   },
   {
     title: '4D',
@@ -63,89 +66,18 @@ const tiers = [
     ],
     buttonText: '(Coming soon)',
     buttonVariant: 'outlined',
+    href: false,
     disabled : true,
   },
 ];
 
 
-const footers = [
-  {
-    title: 'Company',
-    description: ['Team', 'History', 'Contact us', 'Locations'],
-  },
-  {
-    title: 'Features',
-    description: [
-      'Cool stuff',
-      'Random feature',
-      'Team feature',
-      'Developer stuff',
-      'Another one',
-    ],
-  },
-  {
-    title: 'Resources',
-    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-  },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use'],
-  },
-];
-
-function PricingContent() {
+export default function Index() {
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-      >
-        <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Laizy
-          </Typography>
-          <nav>
-            {/*
-
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Features
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Support
-            </Link>            
-            */}
-
-          </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>          
-          <Button href="#" variant="contained" sx={{ my: 1, mx: 1.5 }}>
-            Sign Up
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <LaizyAppBar backbutton={false} />
       {/* Hero unit */}
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography
@@ -220,53 +152,31 @@ function PricingContent() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} disabled={tier.disabled}>
-                    {tier.buttonText}
-                  </Button>
+                  {
+                  tier.href 
+                  ? 
+                    <Link href={tier.href} sx={{width:"100%"}} >
+                      <Button fullWidth variant={tier.buttonVariant} disabled={tier.disabled}>
+                        {tier.buttonText}
+                      </Button>
+                    </Link> 
+                  :
+                    <Button fullWidth variant={tier.buttonVariant} disabled={tier.disabled}>
+                      {tier.buttonText}
+                    </Button>                                    
+                   }
+
                 </CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
       </Container>
-      {/* Footer */}
-      <Container
-        maxWidth="md"
-        component="footer"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-        }}
-      >
-        <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="text.primary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-      {/* End footer */}
+      <LaizyFooter/>
     </React.Fragment>
   );
 }
 
-export default function Index() {
-  return <PricingContent />;
-}
 
 
 // BELOW IS THE DEFAULT FROM THE TEMPLATE 
