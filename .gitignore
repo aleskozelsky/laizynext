@@ -16,3 +16,6 @@ yarn-error.log*
 
 # Next.js
 /.next
+
+# static folder for DigitalOcean App Platform
+_static
