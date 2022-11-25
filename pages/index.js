@@ -16,22 +16,13 @@ import Link from '../src/Link'; // next.js link
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 
+import Copyright from '../src/Copyright';
+
 /**
  * Inspired by: https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/getting-started/templates/pricing/Pricing.js
  */
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://laizy.ai/">
-        Laizy.ai
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const tiers = [
   {
@@ -210,8 +201,10 @@ function PricingContent() {
                     <Typography component="h2" variant="h3" color="text.primary">
                       {tier.price}
                     </Typography>
+                    {/* 
                     <Typography variant="h6" color="text.secondary">
-                    </Typography>
+                    </Typography>                    
+                    */}
                   </Box>
                   <ul>
                     {tier.description.map((line) => (
