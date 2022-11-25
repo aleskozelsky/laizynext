@@ -9,6 +9,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en" className={roboto.className}>
         <Head>
+          {/* AK: Adding title and meta description */}
+          <title>Laizy.ai</title>
+          <meta name="description" content="Free AI Generated Images, 3D Models, Animations and much more."/>
+
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/favicon.ico" />
