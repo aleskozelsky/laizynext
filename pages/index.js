@@ -95,7 +95,7 @@ export default function Index() {
       </Container>
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
+        <Grid container spacing={5} alignItems="flex-end" >
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
@@ -171,6 +171,11 @@ export default function Index() {
             </Grid>
           ))}
         </Grid>
+        <Typography variant="h4" align="center" color="text.primary" gutterBottom sx={{marginTop:"2rem"}}>
+          We use
+        </Typography>     
+
+
       </Container>
       <LaizyFooter/>
     </React.Fragment>

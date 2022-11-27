@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import Link from '../../src/Link'; // next.js link
-
+import TemporaryDrawer from './temporary-drawer.js'
 
 export default function LaizyNav({backbutton}) {
   return (
@@ -23,6 +23,8 @@ export default function LaizyNav({backbutton}) {
             </Link>
           </Typography>
           <nav>
+            
+            <TemporaryDrawer lrtb="l" />
             {/*
 
             <Link
@@ -57,6 +59,7 @@ export default function LaizyNav({backbutton}) {
           </Button>          
           <Button href="#" variant="contained" sx={{ my: 1, mx: 1.5 }}>
             Sign Up
+            {/* IDEALNE CHCI, ABY CELA REGISTRACE PROBEHLA V RIGHT DRAWERU, bez nutnosti opustit stranku */}
           </Button>
         </Toolbar>
       </AppBar>
