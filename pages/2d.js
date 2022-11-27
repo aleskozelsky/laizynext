@@ -8,27 +8,16 @@ import GlobalStyles from '@mui/material/GlobalStyles';
  */
 import LaizyAppBar from '../src/partials/LaizyAppBar';
 import LaizyFooter from '../src/partials/LaizyFooter';
+import Generate2D from '../src/generate2d';
 
-export default function Generate2d() {
+export default function page2D() {
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
       <LaizyAppBar backbutton={true} />
-      {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          2D
-        </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" component="p">
-          2D vole
-        </Typography>
+      <Container disableGutters maxWidth="md" component="main" sx={{ pt: 8, pb: 6 }}>
+        <Generate2D/>
       </Container>
       <LaizyFooter/>
     </React.Fragment>

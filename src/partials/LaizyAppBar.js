@@ -18,8 +18,9 @@ export default function LaizyNav({backbutton}) {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            {backbutton && <Link href="/"><ArrowBackIosIcon/></Link>}
-            Laizy.ai 
+            <Link href="/" sx={{textDecoration:"none"}}>
+              <ArrowBackIosIcon sx={backbutton ? {opacity: 1} : {opacity:0}}/> Laizy.ai 
+            </Link>
           </Typography>
           <nav>
             {/*
