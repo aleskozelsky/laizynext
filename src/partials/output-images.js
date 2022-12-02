@@ -14,7 +14,17 @@ import EditIcon from '@mui/icons-material/Edit';
  * WORDPRESS
  */
 //import apiFetch from '@wordpress/api-fetch';
-
+/**
+ * 
+ * IDEAZ:
+ *  -  "Register to be able to save nativelly"
+ *  -  "Register to remove watermark"
+ *  -  Editor is free, but work in progress.
+ * 
+ *  - History (DBObject+Files) of Output images is somehow "stored locally" (!isloggedin and MAYBE isloggedin)
+ *  - Export to canva
+ * 
+ */
 
 export default function OutputImages({outputs, inputAtts}) {
   const saveOutputImage = function (index){
@@ -86,7 +96,7 @@ export default function OutputImages({outputs, inputAtts}) {
             title={
             <ButtonGroup variant="outlined" aria-label="outlined button group">
               
-              <a href="/register/"><Button startIcon={<EditIcon/>} > Edit</Button></a>
+              <a href="/register/"><Button startIcon={<EditIcon/>} > Edit</Button></a> {/* Tady by mohl byt dropdown "edit in canva" / edit in "3rd party" */}
               <a href="/register/"><Button startIcon={<SaveAltIcon/>} onClick={ () => { saveOutputImage( index  ) }  }> Save</Button></a>
               <a href="/register/"><Button startIcon={<ShareIcon/>} > Share</Button></a>
             </ButtonGroup>

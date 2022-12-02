@@ -9,15 +9,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/StarBorder';
 import Typography from '@mui/material/Typography';
-import Link from '../src/Link'; // next.js link
+import Link from '../src/lib/Link'; // next.js link
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 /**
  * Partials
  */
-import LaizyAppBar from '../src/partials/LaizyAppBar';
-import LaizyFooter from '../src/partials/LaizyFooter';
-
+import LaizyAppBar from '../src/LaizyAppBar';
+import LaizyFooter from '../src/LaizyFooter';
+import LoginInfo from '../src/temp/logininfo';
 
 /**
  * Inspired by: https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/getting-started/templates/pricing/Pricing.js
@@ -62,7 +63,7 @@ const tiers = [
       'Dynamic Environment',
       'Motion',
       '...',
-      '...',
+      '....',
     ],
     buttonText: '(Coming soon)',
     buttonVariant: 'outlined',
@@ -172,9 +173,16 @@ export default function Index() {
           ))}
         </Grid>
         <Typography variant="h4" align="center" color="text.primary" gutterBottom sx={{marginTop:"2rem"}}>
-          We use
-        </Typography>     
-
+          Brought to you by
+        </Typography>    
+        <Stack direction="row" spacing={4} justifyContent="center">
+          <img src="./ext/stability.webp" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
+          <img src="./ext/nvidia.svg" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
+          <img src="./ext/react.svg" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
+          <img src="./ext/nextjs.svg" width="100" style={{filter: "invert(100%)", opacity: "0.8", }} />
+        </Stack>         
+        <div>Je login</div>
+        <div><LoginInfo></LoginInfo></div>
 
       </Container>
       <LaizyFooter/>

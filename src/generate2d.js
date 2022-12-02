@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl'; // import FormLabel from '@
 import TextField from '@mui/material/TextField';
 
 import Alert from '@mui/material/Alert';
-
+import Stack from '@mui/material/Stack';
 
 // Accordion (Customization 1/2)
 import { styled } from '@mui/material/styles';
@@ -25,6 +25,13 @@ import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 
 /**
+ * MUI ICONS
+ */
+import HeightIcon from '@mui/icons-material/Height';
+import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
+import ScaleIcon from '@mui/icons-material/Scale';
+
+/**
  * WORDPRESS
  */
 //import apiFetch from '@wordpress/api-fetch';
@@ -33,6 +40,8 @@ import CircularProgress from '@mui/material/CircularProgress';
  */
 import SelectNumOutputs from './partials/select-num-outputs' 
 //import FormSubmitImage from './ajax/form-submit-image' 
+
+//import Width from '.partials/width'; // new
 
 import SliderWH from './partials/slider-wh'
 import SliderNumSteps from './partials/slider-num-steps'
@@ -62,13 +71,33 @@ const inputAtts =
     pluginVersion: "2022.11.23"
 }
 
+const newIdea__InputAtts = 
+{
+    isUserLoggedIn: true,
+    userId: 4,
+    taxPoweredByObj: [ // "powered by taxonomy - options"
+        {
+            value: 42,
+            option: "Generate with Laizy API"
+        },
+        {
+            value: 43,
+            option: "Generate with Replicate API (third party)"
+        }
+    ],
+    taxUserInterfaceId: 38,
+    isLoggedInUserReplicateTokenAvail: "", // nevim? 
+    manageApiTokensUrl: "http://localhost/laizy/members/Alki/profile/edit/group/2/",
+    pluginVersion: "2022.11.23"    
+}
+
 // Accordion (Customization 2/2 ) - Tohle tady nechci, tohle chci nekde jinde ale nevim jak to udelat :-)  !!! aktodo 
         const Accordion = styled((props) => (
             <MuiAccordion disableGutters elevation={0} square {...props} />
         ))(({ theme }) => ({
             border: `1px solid ${theme.palette.divider}`,
             '&:not(:last-child)': {
-            borderBottom: 0,
+            borderBottom: `1px solid ${theme.palette.divider}`, // AK TOHLE SEM ZMENIL
             },
             '&:before': {
             display: 'none',
@@ -110,9 +139,9 @@ export default function ImageGenerator(inputAtts) {
     
 	// form constants
     const [prompt, setPrompt] = useState(''); // 
-    const [numOutputs, setNumOutputs] = useState(1); // Not really ready, skipping to imagewh
-    const [imageW, setImageW] = useState(768);
-    const [imageH, setImageH] = useState(768);
+    const [numOutputs, setNumOutputs] = useState(4); 
+    const [imageW, setImageW] = useState(512);
+    const [imageH, setImageH] = useState(512);
     const [numSteps, setNumSteps] = useState(50);
     const [guidanceScale, setGuidanceScale] = useState(7.5);
     const [seed, setSeed] = useState('');
@@ -241,38 +270,55 @@ export default function ImageGenerator(inputAtts) {
                         <Typography>Options</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Grid container spacing={3} alignItems="center">
-                                <Grid item >
+
+
+                            <Stack spacing={2} direction="row" >
+                                <HeightIcon sx={{transform: "rotate(90deg)"}}/> 
+                                <Typography>
                                     Width
-                                    <Box sx={{ width: 300, marginLeft: "1rem", marginRight: "1rem" }} >
-                                        <SliderWH imageWH={imageW} setImageWH={setImageW} />
-                                    </Box>
-                                </Grid>
-                                <Grid item >
-                                    Height
-                                    <Box sx={{ width: 300, marginLeft: "1rem", marginRight: "1rem" }} >
-                                        <SliderWH imageWH={imageH} setImageWH={setImageH}/>
-                                    </Box>
-                                </Grid>
-                            </Grid>
-                            <Box sx={{ width: 300 }}>
-                                Number of Steps
-                                <SliderNumSteps isUserLoggedIn={inputAtts.isUserLoggedIn} numSteps={numSteps} setNumSteps={setNumSteps}/>
+                                </Typography>
+                                
+                            </Stack>
+                            <Box  sx={{ mb: 3, }}>
+                                <SliderWH imageWH={imageW} setImageWH={setImageW} />
                             </Box>
-                            
-                            <Box sx={{ width: 300 }}>
-                                Guidance scale
-                                <Slider
-                                    step={0.1}
-                                    min={1}
-                                    max={20}
-                                    value={guidanceScale}
-                                    onChange={ ( e ) => setGuidanceScale( e.target.value ) }
-                                    aria-label="Guidance scale"
-                                    valueLabelDisplay="auto"
-                                    marks={[{value: 7.5,label: '7.5'}]}
-                                />					
+
+                            <Stack spacing={2} direction="row" >
+                                <HeightIcon />
+                                <Typography>
+                                Height
+                                </Typography>
+                            </Stack>
+                            <Box  sx={{ mb: 3, }}>
+                                <SliderWH imageWH={imageH} setImageWH={setImageH}/>
                             </Box>
+
+                            <Stack spacing={2} direction="row"  >
+                                <StairsOutlinedIcon/>
+                                <Typography>
+                                    Steps
+                                </Typography>                                
+                            </Stack>
+                            <SliderNumSteps isUserLoggedIn={inputAtts.isUserLoggedIn} numSteps={numSteps} setNumSteps={setNumSteps}/>
+
+
+                            <Stack spacing={2} direction="row" >
+                                <ScaleIcon/>
+                                <Typography>
+                                    Guidance scale
+                                </Typography>                                
+				
+                            </Stack>
+                            <Slider
+                                step={0.1}
+                                min={1}
+                                max={20}
+                                value={guidanceScale}
+                                onChange={ ( e ) => setGuidanceScale( e.target.value ) }
+                                aria-label="Guidance scale"
+                                valueLabelDisplay="auto"
+                                marks={[{value: 7.5,label: '7.5'}]}
+                            />	
 
                             <Box sx={{ width: 300 }}>
                                 <TextField
