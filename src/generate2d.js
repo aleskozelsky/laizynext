@@ -33,7 +33,7 @@ import CircularProgress from '@mui/material/CircularProgress';
  import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
  import ScaleIcon from '@mui/icons-material/Scale';
  import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
- import PhotoCamera from '@mui/icons-material/PhotoCamera';
+
 
 /**
  * WORDPRESS
@@ -53,6 +53,7 @@ import SliderGuidanceScale from './partials/slider-guidance-scale'
 import Seed from './partials/seed'
 import ButtonGroupGenerate from './partials/button-group-generate'
 
+import InputImages from './partials/input-images'
 import OutputImages from './partials/output-images'
 
 const inputAtts = 
@@ -268,10 +269,7 @@ export default function ImageGenerator() { // tady bylo ImageGenerator(inputAtts
                             value={prompt}
                             onChange={ ( e ) => setPrompt( e.target.value ) }
                         />	  
-                        <Button variant="outlined" startIcon={<PhotoCamera />}  aria-label="upload picture" component="label">
-                            <input hidden accept="image/*" type="file" />
-                            Upload
-                        </Button>                   
+                        <InputImages/>
                     </Stack >   
                     <Typography
                         component="h4"
