@@ -96,9 +96,9 @@ export default function OutputImages({outputs, inputAtts}) {
             title={
             <ButtonGroup variant="outlined" aria-label="outlined button group">
               
-              <a href="/register/"><Button startIcon={<EditIcon/>} > Edit</Button></a> {/* Tady by mohl byt dropdown "edit in canva" / edit in "3rd party" */}
-              <a href="/register/"><Button startIcon={<SaveAltIcon/>} onClick={ () => { saveOutputImage( index  ) }  }> Save</Button></a>
-              <a href="/register/"><Button startIcon={<ShareIcon/>} > Share</Button></a>
+              <a href="/register/?ref=editimgbutton"><Button startIcon={<EditIcon/>} > Edit</Button></a> {/* Tady by mohl byt dropdown "edit in canva" / edit in "3rd party" */}
+              <a href="/register/?ref=saveimgbutton"><Button startIcon={<SaveAltIcon/>} onClick={ () => { saveOutputImage( index  ) }  }> Save</Button></a>
+              <a href="/register/?ref=shareimgbuton"><Button startIcon={<ShareIcon/>} > Share</Button></a>
             </ButtonGroup>
             }
             //subtitle={}

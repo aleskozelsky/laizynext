@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl'; // import FormLabel from '@
 import TextField from '@mui/material/TextField';
 
 import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
+
 
 // Accordion (Customization 1/2)
 import { styled } from '@mui/material/styles';
@@ -24,12 +24,14 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 
+
 /**
  * MUI ICONS
  */
-import HeightIcon from '@mui/icons-material/Height';
-import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
-import ScaleIcon from '@mui/icons-material/Scale';
+ import HeightIcon from '@mui/icons-material/Height';
+ import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+ import ScaleIcon from '@mui/icons-material/Scale';
+ import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
 
 /**
  * WORDPRESS
@@ -45,7 +47,8 @@ import SelectNumOutputs from './partials/select-num-outputs'
 
 import SliderWH from './partials/slider-wh'
 import SliderNumSteps from './partials/slider-num-steps'
-
+import SliderGuidanceScale from './partials/slider-guidance-scale'
+import Seed from './partials/seed'
 import ButtonGroupGenerate from './partials/button-group-generate'
 
 import OutputImages from './partials/output-images'
@@ -267,94 +270,60 @@ export default function ImageGenerator(inputAtts) {
 
                     <Accordion>
                         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                        <Typography>Options</Typography>
+                            <Typography>
+                                Options
+                            </Typography>
+                            <Typography sx={{color:"lightgray"}}>
+                                <HeightIcon sx={{ml:2}} /> {imageW}px 
+                                <HeightIcon sx={{ml:2}}/> {imageH}px 
+                                <StairsOutlinedIcon  sx={{ml:2}}/> {numSteps}  
+                                <ScaleIcon  sx={{ml:2}}/> {guidanceScale} 
+                            </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-
-
-                            <Stack spacing={2} direction="row" >
-                                <HeightIcon sx={{transform: "rotate(90deg)"}}/> 
-                                <Typography>
-                                    Width
-                                </Typography>
-                                
-                            </Stack>
-                            <Box  sx={{ mb: 3, }}>
-                                <SliderWH imageWH={imageW} setImageWH={setImageW} />
-                            </Box>
-
-                            <Stack spacing={2} direction="row" >
-                                <HeightIcon />
-                                <Typography>
-                                Height
-                                </Typography>
-                            </Stack>
-                            <Box  sx={{ mb: 3, }}>
-                                <SliderWH imageWH={imageH} setImageWH={setImageH}/>
-                            </Box>
-
-                            <Stack spacing={2} direction="row"  >
-                                <StairsOutlinedIcon/>
-                                <Typography>
-                                    Steps
-                                </Typography>                                
-                            </Stack>
+                            <SliderWH imageWH={imageW} setImageWH={setImageW} text={"Width"} />
+                            <SliderWH imageWH={imageH} setImageWH={setImageH} text={"Height"} />
                             <SliderNumSteps isUserLoggedIn={inputAtts.isUserLoggedIn} numSteps={numSteps} setNumSteps={setNumSteps}/>
-
-
-                            <Stack spacing={2} direction="row" >
-                                <ScaleIcon/>
-                                <Typography>
-                                    Guidance scale
-                                </Typography>                                
-				
-                            </Stack>
-                            <Slider
-                                step={0.1}
-                                min={1}
-                                max={20}
-                                value={guidanceScale}
-                                onChange={ ( e ) => setGuidanceScale( e.target.value ) }
-                                aria-label="Guidance scale"
-                                valueLabelDisplay="auto"
-                                marks={[{value: 7.5,label: '7.5'}]}
-                            />	
-
-                            <Box sx={{ width: 300 }}>
-                                <TextField
-                                id="outlined-number"
-                                label="Seed (optional)"
-                                type="number"
-                                value={seed}
-                                onChange={ ( e ) => setSeed( e.target.value ) }
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                />
-                            </Box>                            
+                            <SliderGuidanceScale guidanceScale={guidanceScale} setGuidanceScale={setGuidanceScale} />
+                            <Seed/>
                         </AccordionDetails>
                     </Accordion>
-
                     <Accordion>
                         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                        <Typography>Styles (n/a)</Typography>
+                            <Typography>Styles & Artists</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                        <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                sit amet blandit leo lobortis eget.
-                        </Typography>
+                            <Typography>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                    malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
+                                    sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                    sit amet blandit leo lobortis eget.
+                            </Typography>
                         </AccordionDetails>
                     </Accordion>
 
 					{   outputs && 
-                        <OutputImages outputs={outputs} inputAtts={inputAtts}/>
+                        <div>
+                            <br/><br/>
+                            <OutputImages outputs={outputs} inputAtts={inputAtts} />
+                        </div>
+
 					}   
 
 					<div style={{textAlign:"center", marginTop:"2rem"}}>
 
+                        <span 
+                        style={{marginRight:"2rem"}}
+                        onClick={ () => setOutputs( 
+                            [
+                                "https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103",
+                                "https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103",
+                                "https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103",
+                                "https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103",
+                            ]
+                            ) }>
+                            Add Dummy
+                        </span>
 						{!isGenerating && inputAtts.isUserLoggedIn &&
                             <ButtonGroupGenerate 
                                 poweredBy={poweredBy} 
