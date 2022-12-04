@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl'; // import FormLabel from '@
 import TextField from '@mui/material/TextField';
 
 import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 
 // Accordion (Customization 1/2)
@@ -32,6 +33,7 @@ import CircularProgress from '@mui/material/CircularProgress';
  import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
  import ScaleIcon from '@mui/icons-material/Scale';
  import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
+ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 /**
  * WORDPRESS
@@ -55,6 +57,19 @@ import OutputImages from './partials/output-images'
 
 const inputAtts = 
 {
+    isUserLoggedIn:false,
+    userId:0,
+    guestId:4,
+    taxPoweredByObj:[{value:41,option:"Generate"}],
+    taxUserInterfaceId:38,
+    isLoggedInUserReplicateTokenAvail:false,
+    manageApiTokensUrl:false,
+    pluginVersion:"1.1.6",
+    ______picoo : "necum"
+}
+
+const inputAtts_LOGGEDIN = // LOGGED IN 
+{
     isUserLoggedIn: true,
     userId: 1,
     guestId: 4,
@@ -72,26 +87,6 @@ const inputAtts =
     isLoggedInUserReplicateTokenAvail: "",
     manageApiTokensUrl: "http://localhost/laizy/members/Alki/profile/edit/group/2/",
     pluginVersion: "2022.11.23"
-}
-
-const newIdea__InputAtts = 
-{
-    isUserLoggedIn: true,
-    userId: 4,
-    taxPoweredByObj: [ // "powered by taxonomy - options"
-        {
-            value: 42,
-            option: "Generate with Laizy API"
-        },
-        {
-            value: 43,
-            option: "Generate with Replicate API (third party)"
-        }
-    ],
-    taxUserInterfaceId: 38,
-    isLoggedInUserReplicateTokenAvail: "", // nevim? 
-    manageApiTokensUrl: "http://localhost/laizy/members/Alki/profile/edit/group/2/",
-    pluginVersion: "2022.11.23"    
 }
 
 // Accordion (Customization 2/2 ) - Tohle tady nechci, tohle chci nekde jinde ale nevim jak to udelat :-)  !!! aktodo 
@@ -132,8 +127,8 @@ const newIdea__InputAtts =
         }));
 
 
-export default function ImageGenerator(inputAtts) {
-    //console.log('inputAtts inside ImageGenerator', inputAtts)
+export default function ImageGenerator() { // tady bylo ImageGenerator(inputAtts)
+    console.log('inputAtts inside ImageGenerator', inputAtts)
     // Constants
 	const [isGenerating, setIsGenerating] = useState(false);
 	const [outputs, setOutputs] = useState(false);
@@ -148,11 +143,11 @@ export default function ImageGenerator(inputAtts) {
     const [numSteps, setNumSteps] = useState(50);
     const [guidanceScale, setGuidanceScale] = useState(7.5);
     const [seed, setSeed] = useState('');
-    const [poweredBy, setPoweredBy] = useState(43); // does not work perfectly, only for the first option. !!! AKTODO
+    const [poweredBy, setPoweredBy] = useState(inputAtts.taxPoweredByObj[0].value); // does not work perfectly, only for the first option. !!! AKTODO
 
     
     const submitForm = function(e) {
-        console.log('Step1: submitForm: (clicked on generate)  poweredBy:',poweredBy,' ')
+        console.log('Step1: submitForm: (clicked on generate)  poweredBy:',poweredBy,' ', inputAtts)
         e.preventDefault();
         // Clear Err and Info MSG
         setErrMsg('');
@@ -255,7 +250,16 @@ export default function ImageGenerator(inputAtts) {
         <Box >
             <form onSubmit={submitForm} >
                 <FormControl >
-                    <div>
+                    <Typography
+                        component="h4"
+                        variant="h4"
+                        align="left"
+                        color="text.primary"
+                        gutterBottom
+                    >
+                        Input
+                    </Typography>                    
+                    <Stack spacing={2} >
                         <TextField sx={{ width: "100%" }}
                             id="prompt" 
                             label="Prompt"
@@ -263,9 +267,21 @@ export default function ImageGenerator(inputAtts) {
                             maxRows={8}
                             value={prompt}
                             onChange={ ( e ) => setPrompt( e.target.value ) }
-                        />	                        
-                    </div>   
-
+                        />	  
+                        <Button variant="outlined" startIcon={<PhotoCamera />}  aria-label="upload picture" component="label">
+                            <input hidden accept="image/*" type="file" />
+                            Upload
+                        </Button>                   
+                    </Stack >   
+                    <Typography
+                        component="h4"
+                        variant="h4"
+                        align="left"
+                        color="text.primary"
+                        gutterBottom
+                    >
+                        Optional
+                    </Typography>   
                     <SelectNumOutputs setNumOutputs={setNumOutputs} numOutputs={numOutputs} />
 
                     <Accordion>
@@ -313,7 +329,7 @@ export default function ImageGenerator(inputAtts) {
 					<div style={{textAlign:"center", marginTop:"2rem"}}>
 
                         <span 
-                        style={{marginRight:"2rem"}}
+                        style={{marginRight:"2rem", color:"rgb(247 247 247)"}}
                         onClick={ () => setOutputs( 
                             [
                                 "https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103",
@@ -322,7 +338,7 @@ export default function ImageGenerator(inputAtts) {
                                 "https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103",
                             ]
                             ) }>
-                            Add Dummy
+                            &
                         </span>
 						{!isGenerating && inputAtts.isUserLoggedIn &&
                             <ButtonGroupGenerate 
@@ -352,3 +368,27 @@ export default function ImageGenerator(inputAtts) {
         </Box>
     );
   }
+/*
+
+const newIdea__InputAtts = 
+{
+    isUserLoggedIn: true,
+    userId: 4,
+    taxPoweredByObj: [ // "powered by taxonomy - options"
+        {
+            value: 42,
+            option: "Generate with Laizy API"
+        },
+        {
+            value: 43,
+            option: "Generate with Replicate API (third party)"
+        }
+    ],
+    taxUserInterfaceId: 38,
+    isLoggedInUserReplicateTokenAvail: "", // nevim? 
+    manageApiTokensUrl: "http://localhost/laizy/members/Alki/profile/edit/group/2/",
+    pluginVersion: "2022.11.23"    
+}
+
+
+*/

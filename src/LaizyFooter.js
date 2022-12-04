@@ -7,11 +7,11 @@ import Copyright from './LaizyCopyright';
 
 const footers = [
   {
-    title: 'Company',
+    title: 'Learn',
     description: ['Team', 'History', 'Contact us', 'Locations'],
   },
   {
-    title: 'Features',
+    title: 'AI Hustles',
     description: [
       'Cool stuff',
       'Random feature',
@@ -21,7 +21,7 @@ const footers = [
     ],
   },
   {
-    title: 'Resources',
+    title: 'Blog',
     description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
   },
   {

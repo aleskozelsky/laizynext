@@ -178,11 +178,15 @@ export default function Index() {
         <Stack direction="row" spacing={4} justifyContent="center">
           <img src="./ext/stability.webp" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
           <img src="./ext/nvidia.svg" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
-          <img src="./ext/react.svg" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
+          <img src="./ext/mui.svg" width="100" style={{filter: "grayscale(100%)", opacity: "0.8"}} />
           <img src="./ext/nextjs.svg" width="100" style={{filter: "invert(100%)", opacity: "0.8", }} />
-        </Stack>         
+          <img src="./ext/github.png" width="80" height="80" style={{opacity: "0.8", paddingTop:"10px" }} />
+        </Stack>    
+        {/*
         <div>Je login</div>
-        <div><LoginInfo></LoginInfo></div>
+        <div><LoginInfo></LoginInfo></div>        
+        */}     
+
 
       </Container>
       <LaizyFooter/>
