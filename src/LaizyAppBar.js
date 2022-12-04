@@ -55,15 +55,16 @@ export default function LaizyNav() {
             */}
 
           </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+          <Button href="https://laizy.ai/wp-login.php?ref=appbar-login" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
             Login
           </Button>      
-          {/*
-          <Button href="#" variant="contained" sx={{ my: 1, mx: 1.5 }}>
+
+          <Button href="https://laizy.ai/register/?ref=appbar-register" variant="contained" sx={{ my: 1, mx: 1.5 }}>
             Sign Up
           </Button>
-          */} 
-          <Drawers side="right"/>   
+          
+          {/* <Drawers side="right"/>  */}
+            
         </Toolbar>
       </AppBar>
   );

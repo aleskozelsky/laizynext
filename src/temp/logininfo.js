@@ -23,7 +23,7 @@ const getSomeResponse = function (){
 export default function LoginInfo() {
 
   return (
-    <div onClick={getSomeResponse} >XXXX
+    <div onClick={ ()=>{ getSomeResponse } } >XXXX
         
     </div>
   );
