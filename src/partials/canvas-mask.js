@@ -1,22 +1,31 @@
 import React, { useState, useEffect, useRef } from "react"; // tady tohle sem psal jaaaa a nevim jestli to je dobre 
 
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
 /**
  * @see: https://www.youtube.com/watch?v=FLESHMJ-bI0
  */
 
+/**
+ * TODO 
+ *  -- DOES NOT WORK ON MOBILE (https://zipso.net/a-simple-touchscreen-sketchpad-using-javascript-and-html5/)
+ * 
+ */
 
-export default function CanvasMask({att1, att2, src}) {
+
+export default function CanvasMask({att1, att2, img}) {
 
     const canvasARef = useRef(null)
     const canvasRef = useRef(null)
+    const contextARef = useRef(null)
     const contextRef = useRef(null)
-    const [thick, setThick] = useState(20)
+    const [thick, setThick] = useState(10)
     const [isDrawing, setIsDrawing] = useState(false)
 
     React.useEffect(()=>{ // Canvas A
-        console.log('canvas a react use effect canvasARef:', canvasARef)
+        //console.log('canvas a react use effect canvasARef:', canvasARef)
         // SAME AS BELOW REALLY 
         const canvas = canvasARef.current // HERE IS NOT SAME 
         canvas.width=att1*2 // 2 is for retina, fixed
@@ -25,14 +34,22 @@ export default function CanvasMask({att1, att2, src}) {
         canvas.style.height = `${att2}px`;
 
         const context = canvas.getContext("2d")
-
+        console.log('YYYYYYYYYYYYYYY img:', img)
+        //context.drawImage( img, 0,0, att1*2, att2*2 )
+        
+        /*
+        // THIS IS FOR SRC AND LOADING EXTERNAL STUFF 
         // paint img - really this should be on another canvas (with same size, but different layer)
         const img = new Image;
         img.src = src;
-        context.drawImage( img, 0,0 )
+        img.onload = () => {
+            context.drawImage( img, 0,0, att1*2, att2*2 )
+        }
+        */
 
         // END 
-    })
+       // contextARef.current = context;
+    },[])
 
 
     React.useEffect(() => {
@@ -47,7 +64,7 @@ export default function CanvasMask({att1, att2, src}) {
         context.scale(2,2)
         context.lineCap = "round"
         context.strokeStyle = "black";
-        context.linewidth = thick
+        context.lineWidth = thick
         contextRef.current = context;
 
 
@@ -79,25 +96,53 @@ export default function CanvasMask({att1, att2, src}) {
 
     }
 
+    const saveCanvas = () => {
+
+    }
+
+    const resetCanvas = () => {
+        
+    }
+
+    const undoCanvas = () => {
+
+    }
+
+    const redoCanvas = () => {
+
+    }
 
     return (
-        <>
+        <> 
+            <Stack direction="row" spacing={2}>
+                <Button>Mask</Button>
+                <Button>Mask Size</Button>
+
+                <Button>Undo</Button>
+                <Button>Redo</Button>
+                <Button>Reset</Button>
+            </Stack>
+
             <div style={{border: "1px solid black", position:"relative"}}>
+                {/* BACKGROUND IMAGE */}        
                 <canvas 
-                    style={{border:"1px solid red"}}
+                    style={{border:"1px solid red",}}
                     ref={canvasARef}
-                />                
+                />        
+                {/* WATERMARK */} 
+                    {/* (this should really be on the outputs and not inputs) */}
+
+                {/* MASK | NEGATIVE PROMPT */}               
                 <canvas 
-                    style={{border:"1px solid green"}}
+                    style={{border:"1px solid green", position:"absolute", top:"0", left:"0"}}
                     onMouseDown={startDrawing}
                     onMouseUp={finishDrawing}
                     onMouseMove={draw}
                     ref={canvasRef}
                 />
-
-                    
+                   
             </div>
-            <span>tohlexasdf</span>       
+    
         </>
     )
 }
