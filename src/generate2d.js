@@ -56,7 +56,7 @@ import ButtonGroupGenerate from './partials/button-group-generate'
 import InputImages from './partials/input-images'
 import OutputImages from './partials/output-images'
 
-const inputAtts = 
+const inputAtts =  // LOGGED OFF 
 {
     isUserLoggedIn:false,
     userId:0,
@@ -66,7 +66,6 @@ const inputAtts =
     isLoggedInUserReplicateTokenAvail:false,
     manageApiTokensUrl:false,
     pluginVersion:"1.1.6",
-    ______picoo : "necum"
 }
 
 const inputAtts_LOGGEDIN = // LOGGED IN 

@@ -18,8 +18,10 @@ export default function InputImages({att1, att2}) {
             {
                 isInputImage && 
                 <div>
-                    <img src ="https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103?w=248&fit=crop&auto=format"/>
+                    {/* <img src ="https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103?w=248&fit=crop&auto=format"/> */}
+                    
                     <Button>Mask</Button>
+                    <CanvasMask att1={512} att2={512} src={"https://www.muxu.cz/spree/products/2382/large/74332298_643180066212811_7308605964813336576_n.jpg?1634572103?w=248&fit=crop&auto=format"}/>
                 </div>
             }
                   
