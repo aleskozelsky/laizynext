@@ -15,7 +15,7 @@ import Button from '@mui/material/Button';
  */
 
 
-export default function CanvasMask({att1, att2, img}) {
+export default function CanvasMask({att1, att2, file}) {
 
     const canvasARef = useRef(null)
     const canvasRef = useRef(null)
@@ -34,8 +34,21 @@ export default function CanvasMask({att1, att2, img}) {
         canvas.style.height = `${att2}px`;
 
         const context = canvas.getContext("2d")
-        console.log('YYYYYYYYYYYYYYY img:', img)
-        //context.drawImage( img, 0,0, att1*2, att2*2 )
+
+        // convert file to image
+        const reader  = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function (e) {
+            var image = new Image();
+            image.src = e.target.result;
+            image.onload = function(ev) {
+                context.drawImage( image, 0,0, att1*2, att2*2 )
+           }
+        }
+
+
+       
+        
         
         /*
         // THIS IS FOR SRC AND LOADING EXTERNAL STUFF 
@@ -52,7 +65,7 @@ export default function CanvasMask({att1, att2, img}) {
     },[])
 
 
-    React.useEffect(() => {
+    React.useEffect(() => { // canvas B 
         console.log('canvas react use effect (init) canvasRef:',canvasRef)
         const canvas = canvasRef.current
         canvas.width=att1*2 // 2 is for retina, fixed

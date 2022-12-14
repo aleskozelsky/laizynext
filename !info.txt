@@ -1,9 +1,18 @@
-Files: https://github.com/mui/material-ui/tree/master/examples/nextjs
-Deployment: https://docs.digitalocean.com/tutorials/app-nextjs-deploy/
 
-Pushing a new version: 
-(edit files)
-git add . 
-git commit -m "message"
-git push 
+1) NEXTJS + MUI + REACT 
+    Files: https://github.com/mui/material-ui/tree/master/examples/nextjs
+2) DIGITAL OCEAN 
+    Deployment: https://docs.digitalocean.com/tutorials/app-nextjs-deploy/
+
+3) GITHUB 
+    Pushing a new version: 
+    (edit files)
+    git add . 
+    git commit -m "message"
+    git push 
+
+
+4) authenticating wordpress decoupled back-end 
+    article: https://developers.wpengine.com/blog/headless-wordpress-authentication-native-cookies
+    video: https://www.youtube.com/watch?v=eeWxvCZHxLs
 
