@@ -11,7 +11,7 @@ console.log('logininfo vole')
 const getSomeResponse =  function (){
   console.log('clicked on getSomeResponse')
   
-  fetch("http://laizy.ai/hauth", {
+  fetch("https://laizy.ai/hauth", {
     method: 'GET',
     redirect: 'follow'
   })
