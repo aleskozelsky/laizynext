@@ -35,33 +35,16 @@ export default function CanvasMask({att1, att2, file}) {
 
         const context = canvas.getContext("2d")
 
-        // convert file to image
+        // convert file to image and paint
         const reader  = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = function (e) {
             var image = new Image();
             image.src = e.target.result;
-            image.onload = function(ev) {
+            image.onload = function(event) {
                 context.drawImage( image, 0,0, att1*2, att2*2 )
            }
         }
-
-
-       
-        
-        
-        /*
-        // THIS IS FOR SRC AND LOADING EXTERNAL STUFF 
-        // paint img - really this should be on another canvas (with same size, but different layer)
-        const img = new Image;
-        img.src = src;
-        img.onload = () => {
-            context.drawImage( img, 0,0, att1*2, att2*2 )
-        }
-        */
-
-        // END 
-       // contextARef.current = context;
     },[])
 
 
@@ -90,7 +73,6 @@ export default function CanvasMask({att1, att2, file}) {
         contextRef.current.beginPath()
         contextRef.current.moveTo(offsetX, offsetY)
         setIsDrawing(true)
-
     }
 
     const finishDrawing = () => {

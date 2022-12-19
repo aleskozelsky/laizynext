@@ -182,10 +182,10 @@ export default function Index() {
           <img src="./ext/nextjs.svg" width="100" style={{filter: "invert(100%)", opacity: "0.8", }} />
           <img src="./ext/github.png" width="80" height="80" style={{opacity: "0.8", paddingTop:"10px" }} />
         </Stack>    
-        {/*
-        <div>Je login</div>
+        
+        <div>Dole je login info: </div>
         <div><LoginInfo></LoginInfo></div>        
-        */}     
+             
 
 
       </Container>

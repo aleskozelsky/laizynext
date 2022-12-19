@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
+import HelpTwoToneIcon from '@mui/icons-material/HelpTwoTone';
 
 const marks = [
   {
@@ -26,7 +27,8 @@ export default function NumberOfSteps({numSteps, setNumSteps, isUserLoggedIn}) {
           </Typography> 
           <Typography>
              {numSteps}
-          </Typography>                               
+          </Typography>    
+          <HelpTwoToneIcon fontSize="small" />                           
         </Stack>
         <Slider
           aria-label="Custom marks"
