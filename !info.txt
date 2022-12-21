@@ -11,8 +11,11 @@
     git commit -m "message"
     git push 
 
+4) Connect Rest API and Next.js (blog/learn/knowledgebase/etc...)
 
-4) authenticating wordpress decoupled back-end 
+
+5) authenticating wordpress decoupled back-end (possibly using same-domain only cookie authentication with native wp cookies?)
     article: https://developers.wpengine.com/blog/headless-wordpress-authentication-native-cookies
     video: https://www.youtube.com/watch?v=eeWxvCZHxLs
+
 

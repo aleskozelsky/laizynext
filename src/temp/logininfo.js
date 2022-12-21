@@ -1,5 +1,8 @@
 import * as React from 'react';
-//import axios from 'axios';
+
+
+
+
 /**
  * 
  * Just playing around trying to find out if logged in or not
@@ -11,33 +14,32 @@ console.log('logininfo vole')
 const getSomeResponse =  function (){
   console.log('clicked on getSomeResponse')
   
+  //fetch("https://laizy.ai/wp-json/akapi/v1/isuserloggedin", {
   fetch("https://laizy.ai/hauth", {
     method: 'GET',
+    //mode: "no-cors",
+    //credentials: 'include', // include, *same-origin, omit
+    //headers: {'X-WP-Nonce':'04ae3097ef'},
     redirect: 'follow'
   })
-  .then(response => response.text())
-  .then(result => console.log(result))
+  .then((res) => res.json()) 
+  .then(result => console.log('result',result))
   .catch(error => console.log('error', error));
   
    
 }      
 
 export default function LoginInfo() {
-
   return (
-    <div onClick={getSomeResponse} > hauth
-        
+    <div>nic</div>
+  )
+  ;
+  return (
+    <div onClick={getSomeResponse} > hauth2
+      <iframe src="https://laizy.ai/wp-json/akapi/v1/isuserloggedin"></iframe>
+      <br></br>
+      <iframe src="https://laizy.ai/hauth"></iframe>
     </div>
   );
 }
 
-
-    // axios.get(
-    //     'https://laizy.ai/wp-json/akapi/v1/isuserloggedin/',{
-    //         headers: {
-    //           'X-WP-NONCE': 'e5b5ebadb0'
-    //         }})
-    //     .then(response => {
-    //         //this.customers = response.data;
-    //         console.log('response.data',response.data)
-    //     });
