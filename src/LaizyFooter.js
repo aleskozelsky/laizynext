@@ -50,7 +50,7 @@ export default function LaizyFooter(){
                 <ul>
                   {footer.description.map((item) => (
                     <li key={item}>
-                      <Link href="/blkw" variant="subtitle1" color="text.secondary">
+                      <Link href="/blog" variant="subtitle1" color="text.secondary">
                         {item}
                       </Link>
                     </li>

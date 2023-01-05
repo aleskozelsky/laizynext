@@ -26,24 +26,24 @@ export async function getServerSideProps(){
   return { props: { posts } };
 }
 
-export default function Blkw({posts}) {
+export default function Blog({posts}) {
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
       <LaizyAppBar />
       <Container disableGutters maxWidth="md" component="main" sx={{ pt: 8, pb: 6 }}>
-
-        <br/><br/>
-        <h1>Blog/Learn/KnowledgeBase/Wiki</h1>
-        <ul>
-          {posts?.map(post => <li key={post.id} >
-            <Link href={`/${post.slug}`}   >
-              <a > {post?.title.rendered} </a>
-            </Link>
-          </li>)}
-        </ul>
-
+        <article>
+          <br/><br/>
+          <h1>Blog/Learn/KnowledgeBase/Wiki</h1>
+          <ul>
+            {posts?.map(post => <li key={post.id} >
+              <Link href={`/${post.slug}`}   >
+                <a > {post?.title.rendered} </a>
+              </Link>
+            </li>)}
+          </ul>        
+        </article>
       </Container>
       <LaizyFooter/>
     </React.Fragment>
