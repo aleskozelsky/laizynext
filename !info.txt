@@ -32,10 +32,12 @@ Q:
 I am the inventor and i want to make a dapp that allows users to upload files to ipfs and trade them for money. 
 How to structure the decentralized system in such a way, that I will get a small percentage of the trading volume.
  Users will pay via card, paypal or crypto and my share could be via ether wallet or web3 domain 
+
+A:  
 To create a decentralized application (dApp) that allows users to upload files to IPFS and trade them for money,
  and receive a small percentage of the trading volume, you can follow these steps:
 
-A: 
+
 First, you will need to set up a front-end interface for your dApp using a framework like React or Next.js. 
 This interface should allow users to select and upload a file, and specify the price they want to sell the file for.
 
@@ -59,3 +61,17 @@ This could be done using a smart contract on the Ethereum blockchain that automa
 
 A
 CHATGPTCHATGPTCHATGPTCHATGPTCHATGPTCHATGPTCHATGPTCHATGPT
+
+BELOW IS MY ANALYSIS 
+    - users are buying tokens to fuel generating media with (fiat or crypto) 
+        - how it will be taxed? -> same as freemius (vat20%+my business tax on revenue after expenses to replicate,aws or other means of nvidia)
+    - users can trade media between eachother -> how they will get paid? (fiat or crypto )
+        - how it will be taxed? -> (users responsibility to tax profit from sales on the platform according to law that apply to them)
+SECURITY 
+    - RISK: someone who is buying a 3d model for x millions is sending me his money and puts trust in me that I will correctly send his money to the seller
+        - i want to avoid that by using a decentralized trust service that handles the exchange. 
+        IMPORTANT: My entire stake in the exchange must be only my % commision. I cannot hold other peoples money, they need to agree between eachother.
+        It's a security thing I don't want to be involved in. 
+        
+        Minimize my task in the value exchange - from my side There are just CID, USD|ETH, sender, receiver parameters provided that the parties agreed on. 
+

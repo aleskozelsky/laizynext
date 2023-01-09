@@ -7,7 +7,7 @@ import * as React from 'react';
  * 
  * Just playing around trying to find out if logged in or not
  * 
- * 
+ * not really used, can be deleted i think.
  * 
  */
 console.log('logininfo vole')
@@ -18,7 +18,7 @@ const getSomeResponse =  function (){
   fetch("https://laizy.ai/hauth", {
     method: 'GET',
     //mode: "no-cors",
-    //credentials: 'include', // include, *same-origin, omit
+    credentials: 'include', // include, *same-origin, omit
     //headers: {'X-WP-Nonce':'04ae3097ef'},
     redirect: 'follow'
   })
@@ -30,15 +30,13 @@ const getSomeResponse =  function (){
 }      
 
 export default function LoginInfo() {
+  // return (
+  //   <div>nic</div>
+  // )
+  // ;
   return (
-    <div>nic</div>
-  )
-  ;
-  return (
-    <div onClick={getSomeResponse} > hauth2
-      <iframe src="https://laizy.ai/wp-json/akapi/v1/isuserloggedin"></iframe>
-      <br></br>
-      <iframe src="https://laizy.ai/hauth"></iframe>
+    <div onClick={getSomeResponse} > vole
+
     </div>
   );
 }
