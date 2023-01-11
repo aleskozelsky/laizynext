@@ -1,4 +1,5 @@
-import * as React from 'react';
+//import * as React from 'react';
+import React, { useContext } from "react"
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -20,6 +21,10 @@ import LaizyAppBar from '../src/LaizyAppBar';
 import LaizyFooter from '../src/LaizyFooter';
 import LoginInfo from '../src/temp/logininfo';
 
+/**
+ * Context
+ */
+import AuthContext from '../src/context/authContext';
 /**
  * Inspired by: https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/getting-started/templates/pricing/Pricing.js
  */
@@ -72,6 +77,10 @@ const tiers = [
 
 
 export default function Index() {
+
+  const authContext = useContext(AuthContext)
+  console.log('tohle je context: ',authContext )
+
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
@@ -183,7 +192,14 @@ export default function Index() {
         
         <div>Dole je login info: </div>
         <div><LoginInfo></LoginInfo></div>        
-             
+        <div>
+        <br/><br/><br/><br/><br/>
+        Dole je context stuff: <br/>
+
+           {authContext.authContextValue}
+
+        
+        </div>
 
 
       </Container>
