@@ -16,6 +16,7 @@ import useSWR from 'swr'
 const fetcher = (...args) => fetch(process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"/hauth/", {credentials:"include"}).then((res) => res.json()  )
 function useUser () {
   const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"/hauth/", fetcher) // prvni argument je neco jako "id" podle kteryho se to cachuje? 
+  console.log('useUser function- error:',error,'isLoading:', isLoading ,'data:',data )
   return {
     user: data,
     isLoading,
