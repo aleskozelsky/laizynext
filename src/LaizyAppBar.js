@@ -8,6 +8,8 @@ import Link from './lib/Link'; // next.js link
 import TemporaryDrawer from './partials/temporary-drawer.js';
 
 import Drawers from './drawers.js';
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
 
 /**
  * WP Auth
@@ -78,13 +80,20 @@ export default function LaizyAppBar() {
           {isError 
           ? <div>Auth Connection Error </div> 
           : (isLoading 
-            ? <div>Loading</div> 
+            ? 
+                <Button variant="outlined" sx={{ my: 1, mx: 1.5 }} disabled>
+                  Loading... 
+                </Button>      
             : (user.isLoggedIn 
                 ? 
                   <>
-                    <div>
-                      Hello Mahfaka {user.email}, {user.wpnonce}
-                    </div>
+                    <a href={process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"/members/"+user.username} sx={{pr:1}} >
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        {user.username}
+                        <Avatar src={user.avatarUrl} alt={user.username}></Avatar>
+                      </Stack>
+                    </a >
+                    
                   </>
                 : 
                   <>
