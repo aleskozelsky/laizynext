@@ -13,9 +13,9 @@ import Drawers from './drawers.js';
  * WP Auth
  */
 import useSWR from 'swr'
-const fetcher = (...args) => fetch("http://localhost/laizy/hauth/", {credentials:"include"}).then((res) => res.json()  )
+const fetcher = (...args) => fetch(process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"/hauth/", {credentials:"include"}).then((res) => res.json()  )
 function useUser () {
-  const { data, error, isLoading } = useSWR(`http://localhost/laizy/hauth/`, fetcher)
+  const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"/hauth/", fetcher) // prvni argument je neco jako "id" podle kteryho se to cachuje? 
   return {
     user: data,
     isLoading,
