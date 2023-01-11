@@ -24,8 +24,6 @@ import LoginInfo from '../src/temp/logininfo';
  * Inspired by: https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/getting-started/templates/pricing/Pricing.js
  */
 
-
-
 const tiers = [
   {
     title: '2D',
@@ -78,7 +76,7 @@ export default function Index() {
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
-      <LaizyAppBar backbutton={false} />
+      <LaizyAppBar />
       {/* Hero unit */}
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography

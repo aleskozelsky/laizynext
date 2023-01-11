@@ -15,7 +15,7 @@ const getSomeResponse =  function (){
   console.log('process.env.NEXT_PUBLIC_LAIZY_WP_HOST: ', process.env.NEXT_PUBLIC_LAIZY_WP_HOST)
   //fetch("https://laizy.ai/wp-json/akapi/v1/isuserloggedin", {
   //fetch("https://laizy.ai/hauth", {
-  fetch ( process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"hauth/",{
+  fetch ( process.env.NEXT_PUBLIC_LAIZY_WP_HOST+"/hauth/",{
     method: 'GET',
     //mode: "no-cors",
     credentials: 'include', // include, *same-origin, omit

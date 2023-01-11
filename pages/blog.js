@@ -17,6 +17,7 @@ import LaizyAppBar from '../src/LaizyAppBar';
 import LaizyFooter from '../src/LaizyFooter';
 //import Generate2D from '../src/generate2d';
 
+
 export async function getServerSideProps(){
   const result = await fetch(
     'https://laizy.ai/wp-json/wp/v2/posts'

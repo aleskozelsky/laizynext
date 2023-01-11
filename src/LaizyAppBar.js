@@ -9,7 +9,25 @@ import TemporaryDrawer from './partials/temporary-drawer.js';
 
 import Drawers from './drawers.js';
 
-export default function LaizyNav() {
+/**
+ * WP Auth
+ */
+import useSWR from 'swr'
+const fetcher = (...args) => fetch("http://localhost/laizy/hauth/", {credentials:"include"}).then((res) => res.json()  )
+function useUser () {
+  const { data, error, isLoading } = useSWR(`http://localhost/laizy/hauth/`, fetcher)
+  return {
+    user: data,
+    isLoading,
+    isError: error
+  }
+}
+
+export default function LaizyAppBar() {
+  const { user, isLoading, isError } = useUser()
+
+  //console.log('sdfsdfsd:',isError, isLoading, isLoggedIn, userEmail)
+
   return (
       <AppBar
         position="static"
@@ -55,13 +73,33 @@ export default function LaizyNav() {
             */}
 
           </nav>
-          <Button href="https://laizy.ai/wp-login.php?ref=appbar-login" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>      
+          
+          {isError 
+          ? <div>Auth Connection Error </div> 
+          : (isLoading 
+            ? <div>Loading</div> 
+            : (user.isLoggedIn 
+                ? 
+                  <>
+                    <div>
+                      Hello Mahfaka {user.email}, {user.wpnonce}
+                    </div>
+                  </>
+                : 
+                  <>
+                    <Button href="https://laizy.ai/wp-login.php?ref=appbar-login" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+                      Login
+                    </Button>      
+      
+                    <Button href="https://laizy.ai/register/?ref=appbar-register" variant="contained" sx={{ my: 1, mx: 1.5 }}>
+                      Sign Up
+                    </Button>      
+                  </>   
+              )
+          )}
+         
+          
 
-          <Button href="https://laizy.ai/register/?ref=appbar-register" variant="contained" sx={{ my: 1, mx: 1.5 }}>
-            Sign Up
-          </Button>
           
           {/* <Drawers side="right"/>  */}
             

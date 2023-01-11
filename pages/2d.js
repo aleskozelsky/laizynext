@@ -14,6 +14,7 @@ import LaizyAppBar from '../src/LaizyAppBar';
 import LaizyFooter from '../src/LaizyFooter';
 import Generate2D from '../src/generate2d';
 
+
 export default function page2D() {
   return (
     <React.Fragment>
@@ -25,7 +26,7 @@ export default function page2D() {
           <ArrowBackIosIcon/> Back
         </Link>
         <br/><br/>
-        <Generate2D/>
+        <Generate2D />
       </Container>
       <LaizyFooter/>
     </React.Fragment>

@@ -66,6 +66,7 @@ const inputAtts =  // LOGGED OFF
     isLoggedInUserReplicateTokenAvail:false,
     manageApiTokensUrl:false,
     pluginVersion:"1.1.6",
+    aaaaa:"tohle_je_fake_data"
 }
 
 const inputAtts_LOGGEDIN = // LOGGED IN 
@@ -127,8 +128,8 @@ const inputAtts_LOGGEDIN = // LOGGED IN
         }));
 
 
-export default function ImageGenerator() { // tady bylo ImageGenerator(inputAtts)
-    console.log('inputAtts inside ImageGenerator', inputAtts)
+export default function ImageGenerator(authData) { // tady bylo ImageGenerator(inputAtts)
+    //console.log('inputAtts inside ImageGenerator', inputAtts)
     // Constants
 	const [isGenerating, setIsGenerating] = useState(false);
 	const [outputs, setOutputs] = useState(false);
@@ -160,13 +161,15 @@ export default function ImageGenerator() { // tady bylo ImageGenerator(inputAtts
         }
         // checks are passed, lets start to generate 
         setIsGenerating(true);
-        fetch( {
-            path: '/wp/v2/job_requests/',
+        fetch( process.env.NEXT_PUBLIC_LAIZY_WP_HOST+'/wp-json/wp/v2/job_requests/', {
+            //path: '/wp/v2/job_requests/',
             method: 'POST',
-            headers: inputAtts.isUserLoggedIn ? false : { // if logged in, headers are done automatically, if not -> use guest acc headers
-                'Authorization': 'Basic '+btoa('user not registered' + ':' + 'tdcD PsxG Erma fEpr D6ax y6zH'), 
-                'Content-Type': 'application/json; charset=UTF-8; application/x-www-form-urlencoded',
-            },    
+            credentials: 'include',
+            headers: {'X-WP-Nonce':'31726ab1d5'},
+            // headers: inputAtts.isUserLoggedIn ? false : { // if logged in, headers are done automatically, if not -> use guest acc headers
+            //     'Authorization': 'Basic '+btoa('user not registered' + ':' + 'tdcD PsxG Erma fEpr D6ax y6zH'), 
+            //     'Content-Type': 'application/json; charset=UTF-8; application/x-www-form-urlencoded',
+            // },    
             data: {
                 "title" : 'SD V001: '+prompt, 
                 "user_interface": inputAtts.taxUserInterfaceId,
